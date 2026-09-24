@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f8e6ee">
+  <meta name="description" content="A birthday surprise made for Lin Neariroth.">
+  <title>Happy Birthday, Lin Neariroth</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23e7a0b8' d='M16 27s-8.5-5.4-11.2-10.2C3 13.6 4.2 9.5 8 8.4 10.4 7.7 12.6 8.6 16 11.4 19.4 8.6 21.6 7.7 24 8.4c3.8 1.1 5 5.2 3.2 8.4C24.5 21.6 16 27 16 27z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="is-intro">
+  <!-- Names, the letter, memories, wishes, photos, and music live in script.js → birthdayConfig -->
+
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <button class="music-toggle" id="music-toggle" type="button" aria-pressed="true" aria-label="Pause music">
+    <span class="music-disc" aria-hidden="true"></span>
+  </button>
+  <audio id="bg-music" loop preload="auto"></audio>
+
+  <div class="opening-bg" id="opening" aria-hidden="true"></div>
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+
+  <section class="opening-screen" id="opening-screen" aria-labelledby="opening-title">
+    <div class="opening-inner">
+      <h1 class="opening-title" id="opening-title">
+        <span class="hey">Hey</span>
+        <span class="opening-name"><span data-name>Lin Neariroth</span> 💝</span>
+      </h1>
+      <p class="opening-sub">I made something special for you...</p>
+      <button class="btn btn-fill surprise-btn" id="open-surprise" type="button">Open Your Surprise ✨</button>
+    </div>
+  </section>
+
+  <main id="story" class="story" inert>
+    <section class="section celebration" id="celebration" aria-labelledby="celebration-title">
+      <div class="balloons" aria-hidden="true">
+        <span class="balloon balloon-rose"></span>
+        <span class="balloon balloon-lilac"></span>
+        <span class="balloon balloon-cream"></span>
+        <span class="balloon balloon-gold"></span>
+        <span class="balloon balloon-blush"></span>
+        <span class="glint"></span>
+        <span class="glint"></span>
+        <span class="glint"></span>
+        <span class="glint"></span>
+      </div>
+      <div class="section-inner celebration-copy reveal">
+        <h2 class="section-heading celebration-title" id="celebration-title">
+          Happy Birthday, <span data-name>Lin Neariroth</span>! 🎂
+        </h2>
+        <div class="ornament" aria-hidden="true"><span></span></div>
+        <p class="lead">Today is your special day, and I wanted to make something a little different for you.</p>
+        <div class="scroll-cue" aria-hidden="true">
+          <span>Scroll</span>
+          <i></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="section letter-section" id="letter" aria-labelledby="letter-title">
+      <div class="section-inner">
+        <article class="message-card reveal" id="message-card">
+          <div class="seal" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path fill="currentColor" d="M12 20s-7-4.4-7-9.1C5 8 6.6 6.2 8.8 6.2c1.3 0 2.4.6 3.2 1.7.8-1.1 1.9-1.7 3.2-1.7 2.2 0 3.8 1.8 3.8 4.7C19 15.6 12 20 12 20z"/>
+            </svg>
+          </div>
+          <h2 class="section-heading card-title" id="letter-title">A Little Message For You 💌</h2>
+          <div class="ornament" aria-hidden="true"><span></span></div>
+          <div class="message-body" id="personal-message"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="memories" aria-labelledby="memories-title">
+      <div class="section-inner">
+        <div class="reveal heading-block">
+          <h2 class="section-heading" id="memories-title">Our Memories 📸</h2>
+          <div class="ornament" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="moments" aria-labelledby="moments-title">
+      <div class="section-inner">
+        <div class="reveal heading-block">
+          <h2 class="section-heading" id="moments-title">Little Moments, Big Memories ✨</h2>
+          <div class="ornament" aria-hidden="true"><span></span></div>
+        </div>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <section class="section" id="wishes" aria-labelledby="wishes-title">
+      <div class="section-inner">
+        <div class="reveal heading-block">
+          <h2 class="section-heading" id="wishes-title">Birthday Wishes</h2>
+          <div class="ornament" aria-hidden="true"><span></span></div>
+        </div>
+        <div class="wish-grid" id="wishes-grid"></div>
+      </div>
+    </section>
+
+    <section class="section cake-section" id="cake-section" aria-labelledby="cake-title">
+      <div class="section-inner">
+        <div class="reveal heading-block">
+          <h2 class="section-heading" id="cake-title">Make a Wish, <span data-short-name>Lin</span> 🎂</h2>
+          <div class="ornament" aria-hidden="true"><span></span></div>
+        </div>
+
+        <div class="cake-stage reveal" id="cake-stage">
+          <div class="cake-sparkles" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="cake" id="birthday-cake" role="img" aria-label="A birthday cake with candles">
+            <div class="candles" aria-hidden="true">
+              <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+              <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+              <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+              <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+              <div class="candle"><span class="flame"></span><span class="smoke"></span></div>
+            </div>
+            <div class="tier tier-top">
+              <div class="icing"></div>
+            </div>
+            <div class="tier tier-mid">
+              <div class="icing"></div>
+              <div class="drips" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="tier tier-base">
+              <div class="icing"></div>
+              <div class="drips" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <div class="plate"></div>
+          </div>
+        </div>
+
+        <div class="cake-actions reveal">
+          <button class="btn btn-fill" id="blow-candles" type="button">Blow Out the Candles ✨</button>
+          <div class="wish-messages" id="wish-messages" aria-live="polite">
+            <p id="wish-result">May your wish come true! 💫</p>
+            <p id="wish-again">Happy Birthday Again, <span data-name>Lin Neariroth</span>! ❤️</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="finale" id="finale" aria-labelledby="finale-title">
+      <div class="finale-hearts" aria-hidden="true">
+        <span class="floater"><span class="heart"></span></span>
+        <span class="floater"><span class="heart"></span></span>
+        <span class="floater"><span class="heart"></span></span>
+        <span class="floater"><span class="heart"></span></span>
+        <span class="floater"><span class="heart"></span></span>
+        <span class="floater"><span class="heart"></span></span>
+      </div>
+      <div class="finale-inner">
+        <p class="finale-kicker">One Last Thing...</p>
+        <div class="finale-rest" id="finale-rest">
+          <div class="finale-rest-inner">
+            <p class="line finale-deserve">You deserve all the happiness in the world. ❤️</p>
+            <h2 class="line finale-title" id="finale-title">Happy Birthday, <span data-name>Lin Neariroth</span>!</h2>
+            <p class="line finale-from">From<br><span class="sender" data-sender>by kimhy</span></p>
+            <button class="btn btn-ghost line" id="start-again" type="button" tabindex="-1">Start Again 🔄</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-backdrop" data-close="true"></div>
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Memory photo">
+      <button class="icon-btn lightbox-close" id="lightbox-close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M6 6 L18 18 M18 6 L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button class="icon-btn lightbox-prev" id="lightbox-prev" type="button" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M15 5 L8 12 L15 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <figure class="lightbox-frame">
+        <img id="lightbox-image" alt="">
+        <figcaption>
+          <span id="lightbox-caption"></span>
+          <span id="lightbox-count"></span>
+        </figcaption>
+      </figure>
+      <button class="icon-btn lightbox-next" id="lightbox-next" type="button" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M9 5 L16 12 L9 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <noscript>
+    <p class="noscript-note">This birthday surprise needs JavaScript turned on.</p>
+  </noscript>
+
+  <script src="script.js"></script>
+</body>
+</html>
